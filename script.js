@@ -20,7 +20,7 @@ function play(playerSelection) {
         document.querySelector(".result").textContent = result + " " + playerSelection + " ties " + computerSelection
     }
     document.querySelector(".win").textContent = "wins:" + wins 
-    document.querySelector(".lose").textContent = "losses:" + losses
+    document.querySelector(".loss").textContent = "losses:" + losses
 
     if(wins == 5){
         alert("player wins")
