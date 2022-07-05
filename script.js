@@ -1,3 +1,4 @@
+let wins=0, losses=0;
 const btn1= document.querySelector(".btn1")
 btn1.addEventListener("click", () => {playerSelection = btn1.textContent; play(playerSelection)})
 const btn2= document.querySelector(".btn2")
@@ -11,10 +12,24 @@ function play(playerSelection) {
 
     if(result == "you win!") {
         document.querySelector(".result").textContent = result + " " + playerSelection + " beats " + computerSelection
+        wins++ 
     }else if(result == "you lose!") {
         document.querySelector(".result").textContent = result + " " + playerSelection + " loses to " + computerSelection
+        losses++
     }else {
         document.querySelector(".result").textContent = result + " " + playerSelection + " ties " + computerSelection
+    }
+    document.querySelector(".win").textContent = "wins:" + wins 
+    document.querySelector(".lose").textContent = "losses:" + losses
+
+    if(wins == 5){
+        alert("player wins")
+        wins = 0
+        losses = 0
+    }else if(losses == 5){
+        alert("cpu wins")
+        wins = 0
+        losses = 0
     }
 }
 
