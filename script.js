@@ -1,29 +1,26 @@
-playGame()
+const btn1= document.querySelector(".btn1")
+btn1.addEventListener("click", () => {playerSelection = btn1.textContent; play(playerSelection)})
+const btn2= document.querySelector(".btn2")
+btn2.addEventListener("click", () => {playerSelection = btn2.textContent; play(playerSelection)})
+const btn3= document.querySelector(".btn3")
+btn3.addEventListener("click", () => {playerSelection = btn3.textContent; play(playerSelection)})
+
+function play(playerSelection) {
+    computerSelection = computerPlay()
+    result = playRound(playerSelection, computerSelection)
+
+    if(result == "you win!") {
+        document.querySelector(".result").textContent = result + " " + playerSelection + " beats " + computerSelection
+    }else if(result == "you lose!") {
+        document.querySelector(".result").textContent = result + " " + playerSelection + " loses to " + computerSelection
+    }else {
+        document.querySelector(".result").textContent = result + " " + playerSelection + " ties " + computerSelection
+    }
+}
 
 function computerPlay() {
     const play=["rock", "paper", "scissors"]
     return play[Math.floor(Math.random() * 3)]
-}
-
-function playGame() {
-    for(let i=0; i < 5; i++) {
-
-        do {
-            playerSelection = prompt("please chose your play (rock, paper, scissors)", String)
-            playerSelection = playerSelection.toLowerCase()
-        } while(playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
-
-        computerSelection = computerPlay()
-        result = playRound(playerSelection, computerSelection)
-        
-        if(result == "you win!") {
-            console.log(result + " " + playerSelection + " beats " + computerSelection)
-        }else if(result == "you lose!") {
-            console.log(result + " " + playerSelection + " loses to " + computerSelection)
-        }else {
-            console.log(result + " " + playerSelection + " ties " + computerSelection)
-        }
-    }
 }
 
 function playRound(playerSelection, computerSelection) {
